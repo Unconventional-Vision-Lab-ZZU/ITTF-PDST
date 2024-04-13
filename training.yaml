@@ -1,0 +1,47 @@
+# Training configuration
+GPU: [0]
+
+VERBOSE: False
+
+Toformerv2:
+  IMG_SIZE: 1024
+  PATCH_SIZE: 2
+  WIN_SIZE: 8
+  EMB_DIM: 24
+  DEPTH_EN: [4, 4, 2, 2]
+  HEAD_NUM: [2, 4, 6, 8]
+  MLP_RATIO: [2, 2, 4, 4]
+  QKV_BIAS: True
+  QK_SCALE: 8
+  DROP_RATE: 0.
+  ATTN_DROP_RATE: 0.
+  DROP_PATH_RATE: 0.1
+  APE: False
+  PATCH_NORM: True
+  USE_CHECKPOINTS: False
+  FINAL_UPSAMPLE: 'MultiUP'
+  in_chans: 3
+  out_chans: 3
+
+MODEL:
+  MODE: 'Reconstruction'
+
+# Optimization arguments.
+OPTIM:
+  BATCH:
+  EPOCHS:
+  # EPOCH_DECAY: [10]
+  LR_INITIAL:
+  LR_MIN:
+  # BETA1: 0.9
+
+TRAINING:
+  VAL_AFTER_EVERY: 1
+  RESUME:
+  TRAIN_PS: 1024
+  VAL_PS: 1024
+  Charbonnier_loss:
+  W:
+  TRAIN_DIR: './datasets/ITDF/train'       # path to training data
+  VAL_DIR: './datasets/ITDF/test' # path to validation data
+  SAVE_DIR: './checkpoints'           # path to save models and images
